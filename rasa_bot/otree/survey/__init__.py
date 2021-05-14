@@ -6,6 +6,7 @@ class Constants(BaseConstants):
     name_in_url = 'survey'
     players_per_group = None
     num_rounds = 1
+    chat_template = 'survey/chat.html'
 
 
 class Subsession(BaseSubsession):
@@ -50,6 +51,7 @@ class Player(BasePlayer):
 
 class index(Page):
     pass
+
 
 class Demographics(Page):
     form_model = 'player'
