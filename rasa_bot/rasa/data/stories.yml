@@ -1,14 +1,35 @@
+version: "2.0"
+
 stories:
- - story: greet and subscribe
-   steps:
-   - intent: greet
-   - action: utter_greet
-   - intent: subscribe
-   - action: newsletter_form
-   - active_loop: newsletter_form
+
+- story: subscribing
+  steps:
+  - intent: assistance 
+  - action: utter_subscriber
+
+- story: introduction
+  steps: 
+  - intent: game_summary
+  - action: utter_summary
+  - action: utter_confirm_options
+  - checkpoint: check_asked_question
+
+- story: user_affirm
+  steps:
+  - checkpoint: check_asked_question
+  - intent: affirm
+  - action: utter_approach
+  - intent: general_information
+  - action: utter_information
+  - intent: general_information_format
+  - action: utter_information2
 
 
- - story: investment game
-   steps:
-   - intent: investment
-   - action: utter_investment
+- story: user_deny
+  steps:
+  - checkpoint: check_asked_question
+  - intent: deny
+  - intent: general_information
+  - action: utter_information
+  - intent: general_information_format
+  - action: utter_information2

@@ -7,11 +7,16 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
+- rule: Greet back
+  steps:
+  - intent: greet
+  - action: utter_greet
+
 - rule: respond to FAQs
   steps:
   - intent: faq
   - action: utter_faq
-  
+
 - rule: respond to chitchat
   steps:
   - intent: chitchat
@@ -41,3 +46,8 @@ rules:
   steps:
   - intent: specific_information
   - action: utter_specific
+
+- rule: Moral ideas
+  steps:
+  - intent: investment
+  - action: utter_investment

@@ -116,13 +116,9 @@ nlu:
     - why am i here 
     - can you tell me a bit about the game
     - What is the task
-
-- intent: game_approach
-  examples: |
-    - approach
-    - how exactly will this game be played
-    - how can i win here
-    - what does a typical round in this game look like 
+    - What should I do
+    - game
+    - task
 
 - intent: general_information
   examples: |
@@ -148,16 +144,32 @@ nlu:
     - what is an etf
     - what is a green etf
 
-- intent: faq/investment
+- intent: investment
   examples: |
-    - How much should I invest?
+    - What would be a good investment?
     - What should I buy?
+
+
+- intent: faq/game_approach
+  examples: |
+    - approach
+    - how exactly will this game be played
+    - how can i win here
+    - what does a typical round in this game look like 
+
+- intent: faq/options
+  examples: |
+    - options
+    - can you tell a bit more about the options
+    - what were the options available
+    - i forgot about the options
 
 - intent: specific_information
   examples: |
     - stockName
     - which investments are available
     - investments
+    - which stocks are available
 
 - intent: shortcuts
   examples: |
@@ -179,3 +191,9 @@ nlu:
     - Please send it to anything@example.com
     - Email is something@example.com
 
+
+- intent: start_game
+  examples: |
+    - Let's start
+    - Start game
+    - i am ready
