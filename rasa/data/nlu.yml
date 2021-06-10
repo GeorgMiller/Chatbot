@@ -1,0 +1,199 @@
+nlu:
+- synonym: timeFrequency
+  examples: |
+    - periodically
+    - frequently
+    - regularly 
+    - recurrently
+    - again and again
+    - intermittently
+
+- synonym: stockName
+  examples: |
+    - BMW
+    - Tesla
+    
+- lookup: stocks
+  examples: |
+    - BMW
+    - Tesla
+
+- intent: greet
+  examples: |
+    - Hi
+    - Hey!
+    - Hallo
+    - Good day
+    - Good morning
+    - Good day
+    - Hello
+    - Hello there
+    - Good morning
+    - Good evening
+    - Good afternoon
+    - Moin
+    - Hey there
+    - Let's go
+    - Hey dude
+    - Goodmorning
+    - Goodevening
+    - howdy
+
+- intent: thanks
+  examples: |
+    - Thanks
+    - Thank you
+    - thanks for the help
+
+- intent: chitchat/ask_name
+  examples: |
+    - What is your name?
+    - Who are you?
+    - May I know your name?
+    - Do you have a name for yourself?
+    - who an I speaking to?
+
+- intent: chitchat/how_are_you
+  examples: |
+    - How are you?
+    - What's up?
+    - How is it going?
+
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - that's right
+    - seems good
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: game_rules
+  examples: |
+    - what are the game rules
+    - rules 
+    - game rules 
+    - goal
+
+- intent: game_summary
+  examples: |
+    - game summary
+    - can you give me a short summary of the game
+    - why am i here 
+    - can you tell me a bit about the game
+    - What is the task
+    - What should I do
+    - game
+    - task
+
+- intent: general_information
+  examples: |
+    - will you provide us with some information about certain investments
+
+- intent: general_information_format
+  examples: |
+    - how will these information look like
+    - are there different types of information
+    - format 
+
+- intent: assistance
+  examples: |
+    - i need some information
+    - is there any data about etfs
+    - statistics
+    - what is the current game situation
+    - can you send me information timeFrequency?
+    - How can I make as much money as possible?
+
+- intent: faq/etf
+  examples: |
+    - what is an etf
+    - what is a green etf
+
+- intent: investment
+  examples: |
+    - What would be a good investment?
+    - What should I buy?
+
+
+- intent: faq/game_approach
+  examples: |
+    - approach
+    - how exactly will this game be played
+    - how can i win here
+    - what does a typical round in this game look like 
+
+- intent: faq/options
+  examples: |
+    - options
+    - can you tell a bit more about the options
+    - what were the options available
+    - i forgot about the options
+
+- intent: specific_information
+  examples: |
+    - stockName
+    - which investments are available
+    - investments
+    - which stocks are available
+
+- intent: shortcuts
+  examples: |
+    - shortcuts
+    - show me all available shortcuts
+    - are there any shortcuts that i can use
+    - list all avaiable shortcuts 
+
+- intent: subscribe
+  examples: |
+    - I want to get the newsletter
+    - Can you send me the newsletter?
+    - Can you sign me up for the newsletter?
+
+- intent: inform
+  examples: |
+    - My email is example@example.com
+    - random@example.com
+    - Please send it to anything@example.com
+    - Email is something@example.com
+
+
+- intent: start_game
+  examples: |
+    - Let's start
+    - Start game
+    - i am ready

@@ -1,0 +1,128 @@
+#app {
+  margin: 2em;
+  padding-bottom: 1em;
+  /* border-radius: 25px; */
+  /* box-shadow: 0px 4px 6px 1px rgba(0, 0, 0, 0.25); */
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #ffffff;
+}
+
+/* .container-fluid, */
+.board {
+  margin: 0 auto;
+  padding: 3em 6em;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #f9f9f9;
+  box-shadow: 0px 4px 6px 1px rgba(0, 0, 0, 0.25);
+}
+
+.container-fluid {
+  margin: 3em;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 75px;
+  text-align: center;
+  text-decoration: underline;
+  color: #000000;
+  margin-left: 1em;
+}
+
+/* UrlBar */
+#urlbar {
+  width: 100%;
+  height: 40px;
+  border-bottom: 3px solid #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5em 2em;
+  background: #f7f7f7;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+/* Ellipse */
+.ellipse {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: calc(50% - 12px / 2);
+  margin: 4px;
+}
+
+.ellipse:first-child {
+  background: rgb(237, 106, 94);
+}
+
+.ellipse:nth-child(2) {
+  background: rgb(245, 191, 80);
+}
+
+.ellipse:nth-child(3) {
+  background: rgb(97, 198, 84);
+}
+
+/* URL Field */
+.urlField {
+  width: 100%;
+  height: 2em;
+  margin: 0 1em;
+  padding-left: 1em;
+  background: #ffffff;
+
+  border: 3px solid #aaaaaa;
+  box-sizing: border-box;
+  border-radius: 12px;
+
+  display: flex;
+}
+
+.text {
+  position: relative;
+
+  font-family: Chalkboard;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+
+  display: flex;
+  align-items: center;
+
+  color: #767676;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-radius: 12px;
+  border: solid 3px rgba(60, 106, 209, 0.8);
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  margin: 2em;
+  padding: 0 0 1em 0;
+  background: #ffffff;
+  z-index: -9999;
+  border: 3px solid #aaaaaa;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px 1px rgba(0, 0, 0, 0.25);
+  /* position: relative; */
+}

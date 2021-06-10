@@ -1,0 +1,37 @@
+version: "3.0"
+services:
+  rasa:
+    image: rasalocal:latest
+    ports:
+      - '5005:5005'
+    volumes:
+      - ./rasa:/app
+    command:
+      - run
+    depends_on: 
+      - otree
+
+  
+  otree:
+    image: otree2:latest
+    command: bash -c "cd chatbot && otree prodserver 0.0.0.0:8000"
+    volumes: 
+      - .:/otree/
+    ports:
+      - '8000:8000'
+    depends_on: 
+      - postgres
+    expose:
+      - 5055
+
+
+  postgres:
+
+    image: postgres 
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db-data:/var/lib/postgres/data 
+
+volumes:
+  db-data:

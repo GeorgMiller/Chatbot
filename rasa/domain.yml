@@ -1,0 +1,97 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - thanks
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - assistance
+  - game_rules
+  - game_approach
+  - game_summary
+  - general_information
+  - general_information_format
+  - specific_information
+  - chitchat
+  - faq
+  - start_game
+
+responses:
+  utter_chitchat/ask_name:
+  - text: "I am Julia"
+  - text: "My name is Julia"
+
+  utter_chitchat/how_are_you:
+  - text: "I'm great! Thanks for asking."
+  - text: "I'm good, thanks!"
+
+  utter_greet:
+  - text: "Hey! Nice to meet you, my name is Julia."
+
+  utter_faq/etf:
+  - text: "An exchange traded fund (ETF) is a type of security that tracks an index, sector, commodity, or other asset, but which can be purchased or sold on a stock exchange the same as a regular stock. Green ETFs only invest in companies that promote socially and environmentally conscious policies and business practices"
+
+  utter_faq/options:
+  - text: "You have a so called green ETF with an return of capital of an estiamted 3% and a basic ETF with a roc of 5%"
+
+  utter_investment:
+  - text: "Currently the available investments are : Tesla(Green ETF) and BMW(basic ETF). A good investment depends on your moral ideas. If you want to just earn money, then basic ETF will be agood investment for you, but if you want to contribute towards the planet, then a Green ETF would be a good investment "
+  
+  utter_thanks:
+  - text: "Glad I could help"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a Julia."
+
+  utter_subscriber:
+  - text: "Of course, i will give you every minute some new data (:"
+
+  utter_rules:
+  - text: "So, there are three rules in total. First, ..."
+
+  utter_summary:
+  - text: "You will participate in an Economic Decision Game where you and the others will have to make investment decisions"
+
+  utter_confirm_options:
+  - text: "The task is to decide upon an investment. You have $100 to invest at your will. Should I tell you the different options?"
+
+  utter_skip_options:
+  - text: "If you have played this game before or you know the options already, we can directly jump on to the game. If you want to know options again you can always ask :)"
+
+  utter_approach:
+  - text: "You have a so called green ETF(Tesla) with an return of capital of an estiamted 3% and a basic ETF(BMW) with a roc of 5%.The task is to invest in either of these. Do you have some questions about the investment?"
+
+  utter_information:
+  - text: "Yes i will! In addition, you can always ask me about further details regarding a certain investment."
+
+  utter_information2:
+  - text: "I will provide you with, e.g. figures, summary statistics, or plain numbers. I recommend you to always specify the format that you want. Furthermore, you can type e.g. 'Tesla information' to get an overview about all available information."
+
+  utter_specific:
+  - buttons:
+      - title: "Tesla"
+        payload: '/Tesla'
+      - title: "BMW"
+        payload: '/BMW'
+    text: "Choose"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
