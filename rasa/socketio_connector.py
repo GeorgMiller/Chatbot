@@ -37,6 +37,7 @@ from TTS.server.synthesizer import Synthesizer
 
 class Connector():
 
+    # THis class is new but wont be used probably
     def __init__(self):
 
         self.config_STT = Namespace(device=None, file=None, model='deepspeech-0.9.3-models.pbmm', nospinner=False, rate=16000, savewav=None, scorer=None, vad_aggressiveness=3)
@@ -95,7 +96,8 @@ class SocketIOOutput(OutputChannel):
 
     async def _send_message(self, socket_id: Text, response: Any) -> None:
         """Sends a message to the recipient using the bot event."""
-
+        ####################################################################### This class takes the message and outputs the .wav file as 
+        # a json numpy convert
         print('#############################################')
         print(response['text'])
         wavs, path = self.synthesizer.tts(response['text'])
@@ -112,6 +114,8 @@ class SocketIOOutput(OutputChannel):
         w = wave.open('path_out.wav', 'r') 
         OUT_FILE = str(ts)+'.wav'
         link = "http://localhost:3000/"+OUT_FILE   
+
+        # TODO this needs do be revised
         await self.sio.emit(self.bot_message_evt, {"text": response['text'], 'link':json_str}, room=socket_id)
 
     async def send_text_message(
@@ -310,7 +314,9 @@ class SocketIOInput(InputChannel):
                 sender_id = data["session_id"]
             else:
                 sender_id = sid
-            
+            #########################################################
+            # THis also needs to be changed. Depending on the input data, the simple deepspeech model can be loaded at the init 
+            # And then just called. 
             '''
             data = synthesizer.tts(sid['text'])
 
