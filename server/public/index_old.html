@@ -161,14 +161,19 @@
       .chat-container > .chatroom > .chats > .chat {
         border: 1px solid black;
       }
+      li {
+        font-size: 1.2em;
+      }
     </style>
   </head>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://npm-scalableminds.s3.eu-central-1.amazonaws.com/@scalableminds/chatroom@master/dist/Chatroom.js"></script>
+  <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io-stream/0.9.1/socket.io-stream.js"></script>
   <script>
     // const io = require("socket.io-client");
-    socket = io();
-    // socket = io('http://localhost:5000');
+    const socketio = io();
+    // const socketio2 = io("http://localhost:5005");
   </script>
   <body id="app">
     <div id="urlbar">
@@ -185,6 +190,7 @@
       <h1>Economic Decision Game</h1>
       <div class="row justify-content-center align-items-center m-5 p-4 board">
         <div class="col-6">
+          <h3>Game Board</h3>
           <canvas
             ref="game"
             width="680"
@@ -196,16 +202,27 @@
         <div class="col-4">
           <div class="row">
             <div class="col-12 mt-4">
-              <h4>Rules</h4>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                reprehenderit, ut similique eveniet dolorem placeat corrupti
-                alias. Vitae, magnam et odio itaque excepturi quas ipsam minus
-                possimus totam nam deserunt?
-              </p>
+              <h3>Rules</h3>
+              <ul>
+                <li style="list-style-type: none">
+                  <strong>Rule 1:</strong> Consult your Assistant before you
+                  make a decision.
+                </li>
+                <li style="list-style-type: none">
+                  <strong>Rule 2:</strong> Communication with other participants
+                  is prohibited.
+                </li>
+                <li style="list-style-type: none">
+                  <strong>Rule 3:</strong> It is not allowed to look up
+                  information via the web.
+                </li>
+                <li style="list-style-type: none">
+                  <strong>Rule n:</strong> ...
+                </li>
+              </ul>
             </div>
             <div class="col-12">
-              <h4>Controls</h4>
+              <h3>Controls</h3>
               <button type="button" class="btn btn-dark" onclick="move('left')">
                 Left
               </button>
@@ -329,6 +346,21 @@
           </div>
         </div>
         <div class="col-5 board chat-container"></div>
+        <div style="margin: 20px">
+          <div>
+            <button id="start-recording" disabled>Start Recording</button>
+            <button id="stop-recording" disabled>Stop Recording</button>
+          </div>
+          <code>Result</code><br />
+          <input id="queryText" type="text" style="width: 400px" />
+          <div id="audio-file">
+            <audio
+              id="audio-player"
+              controls="controls"
+              type="audio/wav"
+            ></audio>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -342,9 +374,10 @@
   <script type="text/javascript">
     let chatroom = new window.Chatroom({
       host: "http://localhost:5005",
-      title: "Helper Bot",
+      title: "Game Assistant",
       container: document.querySelector(".chat-container"),
-      welcomeMessage: "Hi, I am Mike.",
+      welcomeMessage:
+        "Hi, I am Mike and i will be your assistant in this game.",
       speechRecognition: "en-US",
       voiceLang: "en-US",
     });
@@ -357,7 +390,7 @@
     let canvas = document.getElementById("myCanvas");
     let ctx = canvas.getContext("2d");
 
-    socket.on("position", (data) => {
+    socketio.on("position", (data) => {
       position = data;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillRect(position.x, position.y, 20, 20);
@@ -365,7 +398,68 @@
 
     function move(direction) {
       console.log(direction);
-      socket.emit("move", direction);
+      socketio.emit("move", direction);
     }
+
+    const startRecording = document.getElementById("start-recording");
+    const stopRecording = document.getElementById("stop-recording");
+    let recordAudio;
+
+    const socket = socketio.on("connect", function () {
+      console.log("first connect");
+      startRecording.disabled = false;
+    });
+
+    startRecording.onclick = function () {
+      startRecording.disabled = true;
+      console.log("START");
+      navigator.getUserMedia(
+        {
+          audio: true,
+        },
+        function (stream) {
+          recordAudio = RecordRTC(stream, {
+            type: "audio",
+            mimeType: "audio/webm",
+            sampleRate: 44100,
+            desiredSampRate: 16000,
+            recorderType: StereoAudioRecorder,
+          });
+
+          recordAudio.startRecording();
+          stopRecording.disabled = false;
+        },
+        function (error) {
+          console.error(JSON.stringify(error));
+        }
+      );
+    };
+
+    stopRecording.onclick = function () {
+      startRecording.disabled = false;
+      stopRecording.disabled = true;
+
+      recordAudio.stopRecording(function () {
+        recordAudio.getDataURL(function (audioDataURL) {
+          var files = {
+            audio: {
+              type: recordAudio.getBlob().type || "audio/wav",
+              dataURL: audioDataURL,
+            },
+          };
+          console.log("SEND");
+          socketio.emit("message", files);
+        });
+      });
+    };
+
+    const result = document.getElementById("queryText");
+    console.log(result);
+    socketio.on("results", function (data) {
+      console.log(data);
+      // const audio = document.getElementById("audio-player");
+      // audio.src = data;
+      result.value = data;
+    });
   </script>
 </html>

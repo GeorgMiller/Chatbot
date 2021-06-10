@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "mediaserver": "^0.1.1",
     "nodemon": "^2.0.7",
     "socket.io": "^4.1.2",
-    "socket.io-client": "^4.1.2"
+    "socket.io-client": "^4.1.2",
+    "socket.io-stream": "^0.9.1"
   }
 }
